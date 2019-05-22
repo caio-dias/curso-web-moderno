@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>If & For</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <!-- laço for, pega aluno em alunos e usa o i como indice -->
+        <!-- o indice so precisa ser instanciado, se for para ser usado -->
+        <p v-for="(aluno, i) in alunos">
+            {{i+1}}) Nome: {{aluno.nome}} - Nota: {{aluno.nota}} - Status: 
+            <!-- condicionais do vue, podemos colocar tanto expressoes, quanto metodos -->
+            <span v-if="aluno.nota >= 9">Quadro de honra!</span>
+            <span v-else-if="aluno.nota >= 7">Aprovado!</span>
+            <span v-else>Reprovado!</span>
+        </p>
+        <p>
+            <!-- uma forma de fazer um loop de repeticoes -->
+            <span v-for="n in 5">
+                {{n}}
+
+                <!-- v-show = display: none -->
+                <span v-show="n < 5">,</span>
+            </span>
+        </p>
+    </div>
+    <script>
+        // v-if se usa como uma condicao normal, nao mostra o bloco de codigo, v-show se mostra como um css (display:none)
+        new Vue({
+            el: '#app',
+            data: {
+                alunos: [
+                    {nome: 'Ana', nota: 7.8},
+                    {nome: 'Caio', nota: 9.8},
+                    {nome: 'Joao', nota: 8.1},
+                    {nome: 'Julia', nota: 4.8}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

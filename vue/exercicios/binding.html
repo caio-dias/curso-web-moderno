@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Binding</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <p>{{link}}</p>
+        <!-- diretivas do vue, interpolando a string do link-->
+        <p><a v-bind:href="link">Canal</a></p>
+        <!-- outro jeito de fazer um bind -->
+        <p><a :href="link">Canal 2</a></p>
+        <p>
+            <!-- binding bi direcional, muda o dado reativamente pelo v-model -->
+            <input type="text" v-model="nome"><br>
+            <!-- mostra o dado mudado reativamente -->
+            <span>{{nome}}</span>
+        </p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                nome: 'Maria',
+                link: 'https://youtube.com/cod3rcursos'
+            },
+            //sempre que o valor do data for alterado a funcao sera chamada para fazer algo, o nome da funcao, é o mesmo nome do attr
+            watch: {
+                nome(novoValor) {
+                    console.log(novoValor.toUpperCase())
+                }
+            }
+        })
+    </script>
+</body>
+</html>

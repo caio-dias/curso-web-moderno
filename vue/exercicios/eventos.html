@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Eventos</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <p>{{count}}</p>
+        <p>
+            <!-- evento click add 1 em contador -->
+            <button v-on:click="add" >+1</button>
+
+            <!-- decrementa 2 em contador -->
+            <!-- com eventos, a sintaxe reduzida usa o @, ele pode conter expressoes js e tambem chamar metodos -->
+            <button @click="count -=2" >-2</button>
+        </p>
+        <p @mousemove="atualizarPosicao">
+            Coordenadas: {{x}} e {{y}}
+
+            <!-- para o evento mousemove nesse elemento -->
+            <span @mousemove.stop>Aqui não!</span>
+        </p>
+        
+        <!-- mapeia para quando acionar a tecla enter, chama o metodo alerta -->
+        <input type="text" @keyup.enter="alerta">
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                count: 0,
+                x: 0,
+                y: 0
+            },
+            methods: {
+                add () {
+                    this.count++
+                },
+                atualizarPosicao(e) {
+                    this.x = e.clientX
+                    this.y = e.clientY
+                },
+                alerta() {
+                    alert('ENTER!')
+                }
+            }
+        })
+    </script>
+</body>
+</html>
