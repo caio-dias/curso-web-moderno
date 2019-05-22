@@ -7,9 +7,24 @@
     <script src="/js/vue.min.js"></script>
 </head>
 <body class="exercicio">
-
+    <div id="app">
+        <!-- chamando o componente -->
+        <saudacao nome='Caio'></saudacao>
+        <saudacao nome='BRASIL'></saudacao>
+    </div>
     <script>
-        // ...
+        //criando um componente vue, um componente utiliza basicamente tudo do que uma instancia vue tem
+        Vue.component('saudacao', {
+            //parametros do componente
+            props: ['nome'],
+            template: `
+                <div>Bom dia {{nome}}!</div>
+            `
+        })
+
+        new Vue({
+            el: '#app',
+        })
     </script>
 </body>
 </html>
