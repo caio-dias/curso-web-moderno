@@ -10,9 +10,32 @@
 </head>
 
 <body>
-
+    <div id="app">
+        <h1>{{title}}</h1>
+        <div>
+            <input type="text" size="25" placeholder="Digite para gerar o QRcode..." v-model="text">
+        </div>
+        <div v-if="text" class="output">
+            <img :src="newQRCode" alt="QRCode">
+        </div>
+    </div>
     <script>
-        // ...
+        new Vue({
+            el: '#app',
+            data: {
+                title: 'Gerador QRCode',
+                text: 'https://github.com/caio-dias/',
+                qrcode: new QRious({size: 300})
+            },
+            computed: {
+                newQRCode() {
+                    //quando o texto é alterado, é gerado um novo qrcode
+                    //troca o valor de qrcode e atualiza o src da imagem
+                    this.qrcode.value = this.text
+                    return this.qrcode.toDataURL()
+                }
+            }
+        })
     </script>
 </body>
 
