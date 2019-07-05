@@ -6,6 +6,6 @@ console.log(this === exports) //true
 
 function logThis() {
   //dentro de uma funcao this aponta para global
-  console.log('Dentro e uma funcao o this é:',this === exports)
+  console.log('Dentro e uma funcao o this é: ',this === exports)
 }
 logThis()
