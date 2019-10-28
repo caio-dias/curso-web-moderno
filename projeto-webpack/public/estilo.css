@@ -1,0 +1,12 @@
+body {
+  background: lightslategray;
+  width: 100%;
+  background-image: url(9e0ec2c50902d3eb9f52dd0a46b68505.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh; }
+
+.botao {
+  background: red;
+  width: 200px; }
+
